@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fbf7ef" />
+    <title>Color Cue — party game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Color Cue home"><span class="brand-dot"></span>COLOR CUE</a>
+        <button class="icon-button" id="settings-button" aria-label="Open game settings">
+          <span></span><span></span><span></span>
+        </button>
+      </header>
+
+      <section class="game" aria-live="polite">
+        <div class="round-meta">
+          <span id="mode-label">TAP TO PLAY</span>
+          <span class="timer" id="timer" hidden>00:05</span>
+        </div>
+        <button class="card card-white" id="card" aria-label="Next card">
+          <span class="card-rule" id="card-rule">SAY THE WORD</span>
+          <strong id="card-word">BLUE</strong>
+          <span class="tap-hint" id="tap-hint">TAP FOR NEXT</span>
+        </button>
+        <div class="progress" aria-label="Card progress"><span id="progress-fill"></span></div>
+        <p class="instruction" id="instruction"><b>White card?</b> Say the word. <b>Colored card?</b> Say the card color.</p>
+      </section>
+
+      <section class="actions">
+        <button class="secondary-button" id="reset-button">↻ &nbsp;Reset round</button>
+        <button class="primary-button" id="start-button">Start playing <span>→</span></button>
+      </section>
+
+      <section class="how-to">
+        <p class="eyebrow">THE TINY RULEBOOK</p>
+        <div class="rule-row"><span class="rule-chip white-chip">WHITE</span><p>Say the <em>word</em> you see.</p></div>
+        <div class="rule-row"><span class="rule-chip color-chip">COLOR</span><p>Say the <em>color</em> you see.</p></div>
+      </section>
+    </main>
+
+    <div class="scrim" id="scrim" hidden></div>
+    <aside class="settings" id="settings" aria-label="Game settings" aria-hidden="true">
+      <div class="sheet-handle"></div>
+      <div class="settings-header"><div><p class="eyebrow">MAKE IT YOURS</p><h1>Game settings</h1></div><button id="close-settings" class="close-button" aria-label="Close settings">×</button></div>
+      <fieldset>
+        <legend>MOVE TO THE NEXT CARD</legend>
+        <div class="segmented" id="advance-mode">
+          <button data-mode="tap" class="selected">Every press</button>
+          <button data-mode="timer">Custom timer</button>
+        </div>
+      </fieldset>
+      <fieldset id="duration-control" hidden>
+        <legend>SECONDS PER CARD</legend>
+        <div class="stepper"><button data-adjust="-1" aria-label="Decrease seconds">−</button><output id="duration-output">5</output><button data-adjust="1" aria-label="Increase seconds">+</button></div>
+      </fieldset>
+      <fieldset>
+        <legend>AMOUNT OF COLORS</legend>
+        <div class="color-count" id="color-count">
+          <button data-count="2">2</button><button data-count="3">3</button><button data-count="4" class="selected">4</button><button data-count="5">5</button><button data-count="6">6</button><button data-count="7">7</button><button data-count="8">8</button>
+        </div>
+        <p class="helper">More colors means more delightful chaos.</p>
+      </fieldset>
+      <button class="primary-button save-button" id="save-settings">Let's play <span>→</span></button>
+    </aside>
+    <script src="app.js"></script>
+  </body>
+</html>
