@@ -1,5 +1,6 @@
 :root { --ink: #17222b; --paper: #fbf7ef; --lime: #c9ee57; --coral: #ff765e; --blue: #70b7ff; --muted: #68737a; }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
 button, input { font: inherit; }
 .app-shell { min-height: 100dvh; max-width: 620px; margin: auto; padding: 24px 23px 34px; }
