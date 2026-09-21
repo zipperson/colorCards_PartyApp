@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.colorcue.party'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.colorcue.party'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+    }
+}
+
+def generatedWebAssets = layout.buildDirectory.dir('generated/webAssets')
+tasks.register('syncWebAssets', Sync) {
+    from(rootProject.projectDir) {
+        include 'index.html', 'styles.css', 'app.js'
+    }
+    into(generatedWebAssets)
+}
+
+android.sourceSets.named('main') {
+    assets.srcDir(generatedWebAssets)
+}
+
+tasks.named('preBuild').configure {
+    dependsOn(tasks.named('syncWebAssets'))
+}
